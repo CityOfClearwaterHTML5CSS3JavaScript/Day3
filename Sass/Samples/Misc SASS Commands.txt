@@ -1,0 +1,14 @@
+gem install sass
+
+sass --help
+sass -v
+
+sass sample.scss
+sass sample.scss sample.css 
+sass sample.scss sample.css --style compressed
+
+sass --watch input.scss:output.css
+sass --watch app/sass:public/stylesheets
+
+sass-convert style.sass style.scss
+sass-convert style.scss style.sass

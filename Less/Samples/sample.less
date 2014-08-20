@@ -1,0 +1,120 @@
+// Single Line Comment don't compile through
+/* Multi
+   Line
+   Comment do compile thru */
+
+
+/* Variables */
+@nice-blue: #5B83AD;
+@light-blue: @nice-blue + #111;
+.textColor { 
+	color: @light-blue; 
+}
+
+
+/* Mixins */
+.darkBackgroundTextColor { 
+	background-color: black;
+	.textColor;
+}
+.lightBackgroundTextColor {
+	background-color: white;
+	.textColor;
+}
+
+
+/* Nesting */
+.header {
+	.darkBackgroundTextColor;
+	.navigation {
+		font-size: 12px;
+	}
+	.logo {
+		width: 300px;
+	}
+}
+
+
+/* Functions (http://lesscss.org/functions) */
+.functions {
+	width: percentage(0.5);
+	color: saturate(@nice-blue, 5%);
+	background-color: fadeout(lighten(@nice-blue, 25%), 10%);
+}
+
+
+/* Scope */
+.scope1 {
+	@nice-blue: red;
+	color: @nice-blue;
+}
+.scope2 {
+	color: @nice-blue;
+	@nice-blue: lime;	// Order of declaration not important
+}
+.scope3 {
+	color: @nice-blue;
+}
+
+
+/* More Variables */
+@prefix: header;
+@content: logo;
+@state: isVisible; 
+.@{prefix}-@{content}-@{state} { 
+	background-image: url("@{images}/background.jpg"); 
+}
+@images: "../images";
+
+
+/* Non-output Mixin */
+.textColorMixin() {		// () mean do not output, so used for mixin only
+	color: @nice-blue;
+}
+.footer {
+	.textColorMixin;
+}
+
+
+/* Parameter Mixin */
+.border-radius(@radius) {
+	border-radius: @radius;
+}
+.button {
+	.border-radius(6px);
+}
+
+
+/* Multi-Parameter Mixin */
+.box(@backgroundColor; @padding: 5px; @margin: 2px;) {
+	background-color: @backgroundColor;
+	padding: @padding;
+	margin: @margin;
+}
+.dialog1 {
+	.box(white);
+}
+.dialog2 {
+	.box(white; 10px);
+}
+.dialog3 {
+	.box(white; 10px; 5px);
+}
+.dialog4 {
+	.box(white; @margin: 10px);
+}
+
+
+/* Guarded Mixins */
+.lightOrDark(@color) when (lightness(@color) >= 50%) {
+	background-color: black;
+}
+.lightOrDark(@color) when (lightness(@color) < 50%) {
+	background-color: white;
+}
+.lightOrDark(@color) {
+	color: @color;
+}
+.colors {
+	.lightOrDark(@nice-blue);
+}

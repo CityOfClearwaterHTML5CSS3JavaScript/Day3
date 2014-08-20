@@ -1,0 +1,81 @@
+/* Multi
+   Line
+   Comment do compile thru */
+/* Variables */
+.textColor {
+  color: #6c94be;
+}
+/* Mixins */
+.darkBackgroundTextColor {
+  background-color: black;
+  color: #6c94be;
+}
+.lightBackgroundTextColor {
+  background-color: white;
+  color: #6c94be;
+}
+/* Nesting */
+.header {
+  background-color: black;
+  color: #6c94be;
+}
+.header .navigation {
+  font-size: 12px;
+}
+.header .logo {
+  width: 300px;
+}
+/* Functions (http://lesscss.org/functions) */
+.functions {
+  width: 50%;
+  color: #5583b3;
+  background-color: rgba(176, 195, 216, 0.9);
+}
+/* Scope */
+.scope1 {
+  color: #ff0000;
+}
+.scope2 {
+  color: #00ff00;
+}
+.scope3 {
+  color: #5b83ad;
+}
+/* More Variables */
+.header-logo-isVisible {
+  background-image: url("../images/background.jpg");
+}
+/* Non-output Mixin */
+.footer {
+  color: #5b83ad;
+}
+/* Parameter Mixin */
+.button {
+  border-radius: 6px;
+}
+/* Multi-Parameter Mixin */
+.dialog1 {
+  background-color: #ffffff;
+  padding: 5px;
+  margin: 2px;
+}
+.dialog2 {
+  background-color: #ffffff;
+  padding: 10px;
+  margin: 2px;
+}
+.dialog3 {
+  background-color: #ffffff;
+  padding: 10px;
+  margin: 5px;
+}
+.dialog4 {
+  background-color: #ffffff;
+  padding: 5px;
+  margin: 10px;
+}
+/* Guarded Mixins */
+.colors {
+  background-color: black;
+  color: #5b83ad;
+}

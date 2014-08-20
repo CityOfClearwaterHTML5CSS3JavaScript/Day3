@@ -1,0 +1,129 @@
+// Single Line Comment don't compile through
+/* Multi
+ * Line
+ * Comment do compile thru
+
+
+/* Variables
+$nice-blue: #5B83AD
+$light-blue: $nice-blue + #111
+
+.textColor
+  color: $light-blue
+
+
+/* Extends
+.darkBackgroundTextColor
+  background-color: black
+  @extend .textColor
+
+.lightBackgroundTextColor
+  background-color: white
+  @extend .textColor
+
+
+/* Nesting
+.header
+  .navigation
+    font-size: 12px
+  .logo
+    width: 300px
+
+
+/* Functions (http://sass-lang.com/documentation/Sass/Script/Functions.html)
+.functions
+  width: percentage(0.5)
+  color: saturate($nice-blue, 5%)
+  background-color: fade-out(lighten($nice-blue, 25%), 0.1)
+
+
+/* Scope
+.scope1
+  $nice-blue: red
+  color: $nice-blue
+
+.scope2
+  color: $nice-blue
+  $nice-blue: lime
+  // Order of declaration is important
+
+.scope3
+  color: $nice-blue
+
+
+/* More Variables
+$prefix: header
+$content: logo
+$state: isVisible
+$images: "../images"
+
+.#{$prefix}-#{$content}-#{$state}
+  background-image: url("#{$images}/background.jpg")
+
+
+/* All Mixins are Non-output
+=textColorMixin
+  color: $nice-blue
+
+.footer
+  +textColorMixin
+
+
+/* Parameter Mixin
+=border-radius($radius)
+  border-radius: $radius
+
+.button
+  +border-radius(6px)
+
+
+/* Multi-Parameter Mixin
+=box($backgroundColor, $padding: 5px, $margin: 2px)
+  background-color: $backgroundColor
+  padding: $padding
+  margin: $margin
+
+.dialog1
+  +box(white)
+
+.dialog2
+  +box(white, 10px)
+
+.dialog3
+  +box(white, 10px, 5px)
+
+.dialog4
+  +box(white, $margin: 10px)
+
+
+/* Conditions
+=lightOrDark($color)
+  @if lightness($color) >= 50%
+    background-color: black
+  @else
+    background-color: white
+  color: $color
+
+.colors
+  +lightOrDark($nice-blue)
+
+
+/* For Loops
+@for $i from 1 through 3
+  .item-#{$i}
+    width: 2em * $i
+
+
+/* Each Loops
+@each $animal in puma, sea-slug, egret, salamander
+  .#{$animal}-icon
+    background-image: url("#{$images}/#{$animal}.png")
+
+
+/* While Loops
+$i: 6
+
+@while $i > 0
+  .item-#{$i}
+    width: 2em * $i
+  $i: $i - 2
